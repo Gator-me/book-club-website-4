@@ -1,0 +1,21 @@
+---
+import { BOOKS } from '../../data/books';
+import { slugify } from '../../util/utils';
+---
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>All Books</title>
+</head>
+<body>
+<h1>All Books</h1>
+<ul>
+  {BOOKS.map((book) => (
+          <li>
+              <a href={import.meta.env.BASE_URL + `/books/${slugify(book.title)}`}>{book.title}</a>
+          </li>
+  ))}
+</ul>
+</body>
+</html>

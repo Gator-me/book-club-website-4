@@ -1,0 +1,21 @@
+---
+import { BOOKS } from '../../data/books.ts';
+import {slugify} from "../../util/utils";
+import Book from "../../components/Book.tsx"
+
+export async function getStaticPaths() {
+  return BOOKS.map((bookProps) => ({
+    params: { slug: slugify(bookProps.title) },
+    props: { item: bookProps },
+  }));
+}
+
+const { item: bookProps } = Astro.props;
+---
+
+<html>
+  <head><title>{bookProps.title}</title></head>
+  <body>
+    <Book title={bookProps.title} description={bookProps.description} client:load />
+  </body>
+</html>
