@@ -1,6 +1,7 @@
 ---
 import { BOOKS } from '../../data/books';
 import { slugify } from '../../util/utils';
+import './index.css'
 ---
 
 <html lang="en">
@@ -9,13 +10,15 @@ import { slugify } from '../../util/utils';
     <title>All Books</title>
 </head>
 <body>
+<div class="container">
 <h1>All Books</h1>
-<ul>
-  {BOOKS.map((book) => (
-          <li>
-              <a href={import.meta.env.BASE_URL + `/books/${slugify(book.title)}`}>{book.title}</a>
-          </li>
-  ))}
-</ul>
+  <ul>
+    {BOOKS.map((book) => (
+            <li>
+                <a href={import.meta.env.BASE_URL + `/books/${slugify(book.title)}`}>{book.title}</a>
+            </li>
+    ))}
+  </ul>
+</div>
 </body>
 </html>
